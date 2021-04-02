@@ -1,8 +1,9 @@
-<nav [ngClass]="{ navigation: true }">
+<nav ngClass="navigation">
+    <a routerLink="/search" routerLinkActive="active" ngClass="navigation__link">Поиск</a
+  >
   <a
-    routerLink="/search"
-    routerLinkActive="active"
-    [ngClass]="{ navigation__link: true }"
-    >Поиск</a
+    routerLink="/progress"
+    ngClass="navigation__link"
+    >Индикатор загрузки</a
   >
 </nav>

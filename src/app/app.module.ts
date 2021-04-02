@@ -10,9 +10,10 @@ import { SearchComponent } from './components/search/search.component';
 
 import { GetPostsService } from './services/get-posts.service';
 import { FormateNumberPipe } from './pipes/formate-number.pipe';
+import { ProgressComponent } from './components/progress/progress.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, SearchComponent, FormateNumberPipe],
+  declarations: [AppComponent, HomeComponent, SearchComponent, FormateNumberPipe, ProgressComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

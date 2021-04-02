@@ -1,0 +1,32 @@
+.progress{
+    margin: 20px 0;
+    height: 10px;
+    border-radius: 5px;
+    width: 100%;
+    display: flex;
+    border: 1px solid #4711ae;
+    &__fill{
+        width: 0;
+        height: 100%;
+        display: flex;
+        border-radius: 3px;
+        background: #4711ae;
+        transition: width 0.5s;
+    }
+}
+
+.control{
+    border: 0;
+    background-color: #4711ae;
+    padding: 10px 20px;
+    border-radius: 3px;
+    color: #fff;
+    cursor: pointer;
+    &:not(:last-child){
+        margin-right: 20px;
+    }
+    &:focus {
+      background-color: #2a0671;
+      transition: background-color 0.5s;
+    }
+}

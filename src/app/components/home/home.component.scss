@@ -1,6 +1,6 @@
 .navigation {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   padding: 15px;
   margin-top: 20px;
@@ -12,6 +12,10 @@
     color: #fff;
     text-decoration: none;
     transition: background-color 0.5s;
+    max-width: fit-content;
+    &:not(:last-child){
+      margin-bottom: 20px;
+    }
     &:hover {
       background-color: #2a0671;
       transition: background-color 0.5s;

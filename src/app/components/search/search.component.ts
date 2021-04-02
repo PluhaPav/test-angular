@@ -26,14 +26,7 @@ export class SearchComponent implements OnInit, OnDestroy {
         Validators.pattern('[0-9]{1,2}')
       ]),
     });
-    this.subscribes.push(
-      this.searchForm.get('search').valueChanges.pipe(
-        debounceTime(500)
-      ).subscribe(value => {
-        this.searchValue = Number(value);
-        this.init();
-      })
-    );
+    this.subscribes.push(this.checkedChangeValueInput());
   }
 
   ngOnInit(): void {
@@ -46,12 +39,12 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   private getPosts(): SubscriptionLike {
     this.isBigNumber = false;
-    if (this.searchValue&& this.searchValue <= 100) {
+    if (this.searchValue && this.searchValue <= 100) {
       return this.postService.getPostById(this.searchValue).subscribe(posts => {
         if (typeof posts !== 'string') {
           this.posts = [posts];
         }
-      });
+      }, (error) => console.log('Error throw from ' + error, 'getPosts has search value'));
     } else if (this.searchValue && this.searchValue > 100) {
       this.isBigNumber = true;
       return;
@@ -60,7 +53,16 @@ export class SearchComponent implements OnInit, OnDestroy {
       if (typeof posts !== 'string') {
         this.posts = posts;
       }
-    });
+    }, (error) => console.log('Error throw from ' + error, 'getPosts has not search value'));
+  }
+
+  private checkedChangeValueInput(): SubscriptionLike {
+    return this.searchForm.get('search').valueChanges.pipe(
+      debounceTime(500)
+    ).subscribe(value => {
+      this.searchValue = Number(value);
+      this.init();
+    }, (error) => console.log('Error throw from ' + error, 'constructor'))
   }
 
   ngOnDestroy(): void {

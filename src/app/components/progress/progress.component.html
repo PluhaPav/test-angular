@@ -1,0 +1,8 @@
+<div ngClass="wrapper">
+    <div ngClass="progress">
+        <div ngClass="progress__fill" [style.width.%]="progress$ | async"></div>
+    </div>
+
+    <button ngClass="control" (click)="start()">Старт</button>
+    <button ngClass="control" (click)="stop()">Стоп</button>
+</div>
