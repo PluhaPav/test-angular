@@ -1,0 +1,30 @@
+<div ngClass="wrapper">
+  <form ngClass="search" [formGroup]="searchForm" novalidate>
+    <input
+      [value]="searchForm.get('search').value | formateNumber"
+      ngClass="search__input"
+      name="search"
+      formControlName="search"
+      placeholder="Введите Id искомого поста"
+    />
+    <div
+      ngClass="message"
+      *ngIf="
+        (searchForm.controls['search'].invalid &&
+          searchForm.controls['search'].touched) ||
+        isBigNumber
+      "
+    >
+      Введите ID поста не более 100
+    </div>
+  </form>
+  <div *ngIf="!posts; else hasPost">
+    <span>Not found Post!</span>
+  </div>
+  <ng-template #hasPost>
+    <div ngClass="post" *ngFor="let post of posts">
+      <span ngClass="post__title">{{ post.title }}</span>
+      <span ngClass="post__description">{{ post.body }}</span>
+    </div>
+  </ng-template>
+</div>
