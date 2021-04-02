@@ -22,8 +22,8 @@ export class ProgressComponent implements OnInit, OnDestroy {
   private increase: number = 1;
   private maxWidth: number = 100;
 
-  subscribes: SubscriptionLike[] = [];
-  progress$: Observable<number> = of(0).pipe(
+  public subscribes: SubscriptionLike[] = [];
+  public progress$: Observable<number> = of(0).pipe(
     switchMap(() =>
       interval(this.interval).pipe(
         switchMap(() => this.start$.pipe()),
@@ -40,11 +40,11 @@ export class ProgressComponent implements OnInit, OnDestroy {
     this.subscribes.push(this.start$);
   }
 
-  start(): void {
+  public start(): void {
     this.start$.next(true);
   }
 
-  stop(): void {
+  public stop(): void {
     this.start$.next(false);
   }
 

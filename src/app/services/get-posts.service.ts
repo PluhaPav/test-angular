@@ -5,23 +5,25 @@ import { catchError } from 'rxjs/operators';
 
 import { IPost } from '../interfaces/post';
 
+const API = 'http://jsonplaceholder.typicode.com';
+
 @Injectable({
   providedIn: 'root',
 })
 export class GetPostsService {
-  private urlApi = 'http://jsonplaceholder.typicode.com/posts';
+  private urlApi = `${API}/posts`;
 
   constructor(private http: HttpClient) { }
 
-  getPosts(): Observable<string | IPost[]> {
+  public getPosts(): Observable<string | IPost[]> {
     return this.http
       .get<IPost[]>(this.urlApi)
       .pipe(catchError((err) => throwError('Error throw from ' + err)));
   }
 
-  getPostById(id: number): Observable<string | IPost> {
+  public getPostById(id: number): Observable<string | IPost> {
     return this.http
-      .get<IPost>(this.urlApi + `/${id}`)
+      .get<IPost>(`${this.urlApi}/${id}`)
       .pipe(catchError((err) => throwError('Error throw from ' + err)));
   }
 }

@@ -13,11 +13,11 @@ import { GetPostsService } from 'src/app/services/get-posts.service';
   providers: [GetPostsService],
 })
 export class SearchComponent implements OnInit, OnDestroy {
-  searchForm: FormGroup;
-  posts: IPost[] = [];
-  subscribes: SubscriptionLike[] = [];
-  searchValue: number = null;
-  isBigNumber = false;
+  public searchForm: FormGroup;
+  public posts: IPost[] = [];
+  public subscribes: SubscriptionLike[] = [];
+  public searchValue: number = null;
+  public isBigNumber = false;
 
   constructor(private postService: GetPostsService) {
     this.searchForm = new FormGroup({
